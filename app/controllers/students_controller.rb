@@ -6,7 +6,17 @@ class StudentsController < ApplicationController
   end
 
   def show
+    @student = set_student
+    @activity = @student.activity
   end
+  
+  def activity
+    @student = set_student
+    @student.toggle
+    @student.save
+    redirect_to @student
+  end
+
 
   private
 
